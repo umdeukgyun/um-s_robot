@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="trash_pick" type="objdt.py" name="yolo_tf_publisher" output="screen">
+    <!-- objdt가 원래 /trash_detected로 내보내도,
+         실행 시 /can_target_object로 바꿔서 내보내기 -->
+    <remap from="/trash_detected" to="/can_target_object"/>
+  </node>
+
+  <node pkg="trash_pick" type="ppap.py"  name="move_to_can_tf" output="screen">
+    <remap from="/can_target_object" to="/can_target_object"/>
+  </node>
+</launch>
+
