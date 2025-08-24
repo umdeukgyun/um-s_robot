@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="sensor_d435i">
+
+  <xacro:macro name="sensor_d435i" params="parent name *origin">
+    <link name="${name}_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://open_manipulator_description/meshes/d435.dae" scale="1 1 1"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+      <xacro:insert_block name="origin" />
+    </joint>
+  </xacro:macro>
+
+</robot>
+
